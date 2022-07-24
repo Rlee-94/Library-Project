@@ -19,9 +19,9 @@
           <label for="author">Author</label>
           <input type="text" id="author" required />
           <label for="total-pages">Total Pages</label>
-          <input type="text" id="pages" required />
+          <input type="number" min="1" id="pages" required />
           <label for="read-status">Read</label>
-          <input type="checkbox" name="read-status" id="read" />
+          <input type="checkbox" name="read-status" id="status" />
           <button class="btn" type="submit" id="submit">Add Book</button>
         </form>
         <div class="book-calc">
@@ -31,6 +31,7 @@
         </div>
       </div>
     </div>
+    <div><ul id="book-list"></ul></div>
     <script src="script.js"></script>
   </body>
 </html>

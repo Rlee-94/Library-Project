@@ -1,15 +1,15 @@
-let booksLibrary = [];
-
-const btn = document.querySelector(".btn");
-const elementul = document.getElementById("book-list");
-
 function Book(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
 }
 
-function addBookToLibrary() {
+const btn = document.querySelector(".btn");
+let elementUl = document.getElementById("book-list");
+
+let booksLibrary = [];
+
+function addBookToLibrary(book) {
   let elementTitle = document.createElement("p");
   let elementAuthor = document.createElement("p");
   let elementPages = document.createElement("p");
@@ -35,8 +35,9 @@ function submitForm() {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
+  let status = document.getElementById("status").value;
 
-  let book = new Book(title, author, pages);
+  let book = new Book(title, author, pages, status);
 
   booksLibrary.push(book);
 
