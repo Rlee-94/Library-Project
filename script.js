@@ -1,13 +1,13 @@
+const btn = document.querySelector(".btn");
+let elementUl = document.getElementById("book-list");
+
+let booksLibrary = [];
+
 function Book(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
 }
-
-const btn = document.querySelector(".btn");
-let elementUl = document.getElementById("book-list");
-
-let booksLibrary = [];
 
 function addBookToLibrary(book) {
   let elementTitle = document.createElement("p");
@@ -31,7 +31,17 @@ function addBookToLibrary(book) {
   elementUl.appendChild(bookElement);
 }
 
-function submitForm() {
+function displayBook() {
+  booksLibrary.forEach((book) => {
+    let newDiv = document.createElement("div");
+    newDiv.classList.add("card");
+    newDiv.appendChild(book);
+    document.querySelector(".books-container").appendChild(newDiv);
+  });
+}
+
+function submitForm(event) {
+  event.preventDefault();
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
@@ -45,4 +55,3 @@ function submitForm() {
 }
 
 btn.addEventListener("click", submitForm);
-console.log(booksLibrary);
