@@ -13,7 +13,9 @@ function addBookToLibrary(book) {
   let elementTitle = document.createElement("p");
   let elementAuthor = document.createElement("p");
   let elementPages = document.createElement("p");
+
   let bookElement = document.createElement("div");
+
   let titleContent = document.createTextNode(`Title: ${book.title}`);
   let authorContent = document.createTextNode(`Author: ${book.author}`);
   let pageContent = document.createTextNode(`Pages: ${book.pages}`);
