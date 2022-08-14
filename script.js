@@ -29,6 +29,10 @@ function addBookToLibrary(book) {
   bookElement.appendChild(elementPages);
 
   booksContainer.appendChild(bookElement);
+
+  booksLibrary.forEach((book) => {
+    bookElement.classList.add("card");
+  });
 }
 
 function submitForm(event) {
@@ -43,9 +47,5 @@ function submitForm(event) {
 
   addBookToLibrary(book);
 }
-
-booksLibrary.forEach((book) => {
-  book.classList.add("card");
-});
 
 btn.addEventListener("click", submitForm);
