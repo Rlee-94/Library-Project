@@ -1,5 +1,5 @@
 const btn = document.querySelector(".btn");
-let elementUl = document.getElementById("book-list");
+const booksContainer = document.querySelector(".books-container");
 
 let booksLibrary = [];
 
@@ -13,12 +13,10 @@ function addBookToLibrary(book) {
   let elementTitle = document.createElement("p");
   let elementAuthor = document.createElement("p");
   let elementPages = document.createElement("p");
-
-  let bookElement = document.createElement("li");
-
-  let titleContent = document.createTextNode("Title: " + book.title);
-  let authorContent = document.createTextNode("Author: " + book.author);
-  let pageContent = document.createTextNode("Pages: " + book.pages);
+  let bookElement = document.createElement("div");
+  let titleContent = document.createTextNode(`Title: ${book.title}`);
+  let authorContent = document.createTextNode(`Author: ${book.author}`);
+  let pageContent = document.createTextNode(`Pages: ${book.pages}`);
 
   elementTitle.appendChild(titleContent);
   elementAuthor.appendChild(authorContent);
@@ -28,16 +26,7 @@ function addBookToLibrary(book) {
   bookElement.appendChild(elementAuthor);
   bookElement.appendChild(elementPages);
 
-  elementUl.appendChild(bookElement);
-}
-
-function displayBook() {
-  booksLibrary.forEach((book) => {
-    let newDiv = document.createElement("div");
-    newDiv.classList.add("card");
-    newDiv.appendChild(book);
-    document.querySelector(".books-container").appendChild(newDiv);
-  });
+  booksContainer.appendChild(bookElement);
 }
 
 function submitForm(event) {
@@ -45,13 +34,16 @@ function submitForm(event) {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
-  let status = document.getElementById("status").value;
 
-  let book = new Book(title, author, pages, status);
+  let book = new Book(title, author, pages);
 
   booksLibrary.push(book);
 
   addBookToLibrary(book);
 }
+
+booksLibrary.forEach((book) => {
+  book.classList.add("card");
+});
 
 btn.addEventListener("click", submitForm);
